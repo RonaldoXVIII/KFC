@@ -4,7 +4,7 @@ package Modelo;
 public class Trabajador
 {
     protected int id;
-    protected String nombre;
+    public String nombre;
     protected String apellidoPaterno;
     protected String apellidoMaterno;
     protected String dni;

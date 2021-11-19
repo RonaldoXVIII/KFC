@@ -17,14 +17,16 @@ public class DAOTrabajadorImpl extends Conexion implements DAOTrabajador
         try
         {
             this.conectar();
-            PreparedStatement ps = this.cn.prepareStatement("select fk_idTipoDeTrabajador from Trabajador where usuario=? and contraseña=?");
+            PreparedStatement ps = this.cn.prepareStatement("select fk_idTipoDeTrabajador,nombre from Trabajador where usuario=? and contraseña=?");
             ps.setString(1, nombreUsuario);
             ps.setString(2, Contraseña);
+            
             rs = ps.executeQuery();
             
             if(rs.next())
             {   
                 t.idtipoTrabajador = rs.getInt(1);
+                t.nombre = rs.getString(2);
             }
             this.cerrar();
         }

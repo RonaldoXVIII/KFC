@@ -3,6 +3,7 @@ package Vista;
 //import java.awt.Color;
 
 import Controlador.AdministradorController;
+import Controlador.VendedorController;
 import DAO.DAOTrabajador;
 import DAO.DAOTrabajadorImpl;
 import Modelo.Trabajador;
@@ -13,6 +14,15 @@ public class FrmLogin extends javax.swing.JFrame
     public static AdministradorController objAdministradorController;
     public FrmRegistro objFrmRegistro;
     public FrmAdministrador objFrmAdministrador;
+    
+   private FrmSistemaVenta objFrmSistemaVenta;
+   public static VendedorController objVendedorController;
+    
+    
+    
+    
+    
+    
     DAOTrabajador daoT;
     
     public FrmLogin() 
@@ -24,10 +34,16 @@ public class FrmLogin extends javax.swing.JFrame
     public void inicializarOtrosComponentes()
     {
         objFrmAdministrador = new FrmAdministrador();
-        
         objAdministradorController = new AdministradorController(this);
         
+        
+        
+      
+        objVendedorController = new VendedorController(this);
+        
+        
         daoT = new DAOTrabajadorImpl();
+
         
     }
     
@@ -237,8 +253,10 @@ public class FrmLogin extends javax.swing.JFrame
         
         if(t.idtipoTrabajador == 1)                  
             objFrmAdministrador.setVisible(true);      
-        //else
-           // objFrmAdministrador.setVisible(true);    
+        else if (t.idtipoTrabajador == 2)
+                objFrmSistemaVenta = new FrmSistemaVenta(t.nombre);
+                objFrmSistemaVenta.setVisible(true);
+           
             
         /*        String name = txtNombreUsuario.getText(), contraseña = pswContraseñaUsuario.getText();
         boolean UserExiste;

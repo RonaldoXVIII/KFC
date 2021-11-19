@@ -16,10 +16,12 @@ public class FrmSistemaVenta extends javax.swing.JFrame
     public ProductoController objProductoController;
     public FechaYHoraController objFechaYHoraController;
     int numeroVenta = 1;
+    static String nombreV;
     
-    public FrmSistemaVenta() 
+    public FrmSistemaVenta(String nombreVendedor) 
     {
         initComponents();        
+        nombreV = nombreVendedor;
         inicializar();  
     }    
 
@@ -43,6 +45,9 @@ public class FrmSistemaVenta extends javax.swing.JFrame
         lblNumeroVenta.setText("NVTA-" + numeroVenta);
         txtPrecioProducto.setEnabled(false);
         txtNombreProducto.setEnabled(false);
+        
+        txtNombreVendedor.setText(nombreV);
+        txtNombreVendedor.setEditable(false);
     }     
     
     @SuppressWarnings("unchecked")
@@ -530,7 +535,7 @@ public class FrmSistemaVenta extends javax.swing.JFrame
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmSistemaVenta().setVisible(true);
+                new FrmSistemaVenta(nombreV).setVisible(true);
             }
         });
     }

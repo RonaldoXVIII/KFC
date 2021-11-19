@@ -16,7 +16,7 @@ public class Conexion
     {
         try
         {
-            cn = DriverManager.getConnection(urlWorkBench,user,passwordWorkBench);        
+            cn = DriverManager.getConnection(urlXamp,user,passwordXamp);        
             Class.forName(jdbc_driver);                 
         }
         catch(Exception e)
